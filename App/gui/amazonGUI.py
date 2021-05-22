@@ -329,7 +329,7 @@ class Ui_MainWindow(object):
         self.txtEmail = QtWidgets.QTextEdit(self.GroupBox)
         self.txtEmail.setGeometry(QtCore.QRect(280, 190, 511, 41))
         self.txtEmail.setTabChangesFocus(True)
-        self.txtEmail.setPlaceholderText("")
+        self.txtEmail.setPlaceholderText("re.dolatabadi@gmail.com")
         self.txtEmail.setObjectName("txtEmail")
         self.txtEmail.setStyleSheet(
                     "border : solid black;"

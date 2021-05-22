@@ -15,7 +15,7 @@ from gui.amazonGUI import Ui_MainWindow
 url = ""
 p = 0
 ex_price = 0.0
-usr_email = ""
+usr_email = "re.dolatabadi@gmail.com"
 flag=0
 
 class App(Ui_MainWindow):
@@ -41,7 +41,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             print(self.usr_email+"\n")
             ex_price = float(self.p)
             # url = "https://www.amazon.in/Test-Exclusive-550/dp/B077Q7GW9V/ref=lp_22426818031_1_1"
-            self.driver = webdriver.Chrome(ChromeDriverManager().install())
+            # self.driver = webdriver.Chrome(ChromeDriverManager().install())
+            self.driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver')
+            #sudo apt install chromium-chromedriver
             self.driver.get(self.url)
             source = self.driver.page_source
             soup = BeautifulSoup(source, 'html.parser')
@@ -81,7 +83,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.msgbox("Info", title, x)
             self.txtUrl.clear()
             self.txtPrice.clear()
-            self.txtEmail.clear()
+            # self.txtEmail.clear()
     
     def validator(self):
         url_validate = QRegExpValidator(QRegExp(r'^.*[.amazon.in].*$'))
@@ -91,7 +93,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         again = ""
         self.url = self.txtUrl.toPlainText()
         self.p = self.txtPrice.toPlainText()
-        self.usr_email = self.txtEmail.toPlainText()
+        self.usr_email = "re.dolatabadi@gmail.com"#self.txtEmail.toPlainText()
 
         if url_validate.validate(self.url, 0)[0] != QValidator.Acceptable:
             print(url_validate.validate(self.url, 0))
@@ -106,7 +108,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if email_validate.validate(self.usr_email, 0)[0] != QValidator.Acceptable:
             print(email_validate.validate(self.usr_email, 0))
             again = again + "Email : Please enter right email\n"
-            self.txtEmail.clear()
+            # self.txtEmail.clear()
         return again
 
     def msgbox(self, condition,title, x):
